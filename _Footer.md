@@ -1,6 +1,6 @@
 PLANG has dependencies that are not part of the PLANG project.
 
-Closed-source Dependencies
+##Closed-source Dependencies
 ----------------------------------------------------------
 You must acquire and install these yourself.
 
