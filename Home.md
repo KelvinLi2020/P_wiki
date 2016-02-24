@@ -4,7 +4,7 @@
 You must acquire and install these yourself.
 
 1. [Microsoft .NET 4.5](http://www.microsoft.com/en-us/download/details.aspx?id=30653)
-2. Visual Studio 2012 (Update 4) or Visual Studio 2013  
+2. Visual Studio 2015 (The Free [Community Edition](https://www.microsoft.com/en-us/download/details.aspx?id=48146) works)
 
 ### Open-source Dependencies
 
@@ -14,20 +14,28 @@ You must acquire and install these yourself.
 4. Zing (https://github.com/ZingModelChecker/Zing)
 5. AGL (https://github.com/Microsoft/automatic-graph-layout)
 
+These are included in the "Ext" folder.
+
+### Getting the bits
+
+`mkdir git`
+`cd git`
+`git clone https://github.com/p-org/P.git`
+`cd P`
+
 ### Compiling PLANG
-_Release version_ - open a command prompt:
 
-`cd Somewhere\Plang\Bld`
+_Release x86 version_ - open a Visual Studio Developer Command Prompt:
 
-`build.bat`
+`bld\build.bat release x86`
 
-_Debug version_ - open a command prompt:
+_Debug version_ :
 
-`cd Somewhere\Plang\Bld`
+`bld\build.bat debug x86`
 
-`build.bat -d`
+Use 'x64' for 64 bit build.
 
-Outputs of the build are placed in Somewhere\Plang\Bld\Drops
+Outputs of the build are placed in ~\Bld\Drops
 
 ### Running regression tests
 
@@ -35,5 +43,5 @@ Outputs of the build are placed in Somewhere\Plang\Bld\Drops
 
 `testP.bat RegressionTests.txt`
 
-As a side effect, PLANG will be rebuilt with build.bat -d and
+As a side effect, PLANG will be rebuilt and 
 regressions will be run against the x86 debug version placed in the Bld\Drops folder.
