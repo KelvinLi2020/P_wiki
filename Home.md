@@ -39,7 +39,7 @@ Outputs of the build are placed in ~\Bld\Drops
 
 Do one command line build first because this builds the Zing compiler that we depend on.
 
-Then you can load P.sln in Visual Studio, select the "x86" or "x86" build target (do not use AnyCPU).
+Then you can load P.sln in Visual Studio, select the "x86" or "x64" build target (do not use AnyCPU).
 
 ### Running regression tests
 
