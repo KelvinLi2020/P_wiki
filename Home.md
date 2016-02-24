@@ -48,3 +48,7 @@ Outputs of the build are placed in ~\Bld\Drops
 
 As a side effect, PLANG will be rebuilt and 
 regressions will be run against the x86 debug version placed in the Bld\Drops folder.
+
+### Creating your first P program
+
+See [Creating a P program](https://github.com/p-org/P/wiki/Creating-a-P-Program).
