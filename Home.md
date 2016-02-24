@@ -1,12 +1,10 @@
-**P** has dependencies that are not part of the project.
-
-### Closed-source Dependencies
+### Tool Dependencies
 You must acquire and install these yourself.
 
 1. [Microsoft .NET 4.5](http://www.microsoft.com/en-us/download/details.aspx?id=30653)
 2. Visual Studio 2015 (The Free [Community Edition](https://www.microsoft.com/en-us/download/details.aspx?id=48146) works)
 
-### Open-source Dependencies
+### Open-source Library Dependencies
 
 1. Gardens Point Scanner Generator (http://gplex.codeplex.com/)
 2. Gardens Point Parser Generator (http://gppg.codeplex.com/)
