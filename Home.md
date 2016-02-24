@@ -18,10 +18,10 @@ These are included in the "Ext" folder.
 
 ### Getting the bits
 
-   `mkdir git  
-    cd git  
-    git clone https://github.com/p-org/P.git  
-    cd P`
+   `mkdir git`  
+    `cd git`  
+    `git clone https://github.com/p-org/P.git`  
+    `cd P`
   
 ### Compiling PLANG
 
