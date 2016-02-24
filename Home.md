@@ -16,6 +16,10 @@ You must acquire and install these yourself.
 
 These are included in the "Ext" folder.
 
+### Creating your first P program
+
+See also [Creating a P program](https://github.com/p-org/P/wiki)
+
 ### Getting the bits
 
    `mkdir git`  
