@@ -39,8 +39,7 @@ Outputs of the build are placed in ~\Bld\Drops
 
 ### Running regression tests
 
-`cd Somewhere\Plang\Tst`
-
+`cd Somewhere\Plang\Tst`  
 `testP.bat RegressionTests.txt`
 
 As a side effect, PLANG will be rebuilt and 
