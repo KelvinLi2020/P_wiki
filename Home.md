@@ -20,7 +20,8 @@ These are included in the "Ext" folder.
     `cd git`  
     `git clone https://github.com/p-org/P.git`  
     `cd P`
-  ### Compiling PLANG from the Command Line
+
+### Compiling PLANG from the Command Line
 
 _Release x86 version_ - open a Visual Studio Developer Command Prompt:
 
