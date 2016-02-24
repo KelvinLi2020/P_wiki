@@ -2,7 +2,7 @@ Once you have built the P compiler following [these steps](https://github.com/p-
 
 1. Add the following to your vcxproj file after the import Microsoft.Cpp.props line, be sure to give the correct path to your P git workspace.
  
-  `<Import Project="c:\git\P\Bld\Targets\p.targets" />`
+  `<Import Project="_c:\git\P_\Bld\Targets\p.targets" />`
 
 3. Add your sample.p file to the project like this:
 
