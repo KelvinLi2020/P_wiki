@@ -1,4 +1,4 @@
-Once you have built the P compiler following these steps, you can now use it in your new sample app by integrating it into your *.vcxproj file.  Follow these steps:
+Once you have built the P compiler following [these steps](https://github.com/p-org/P/wiki), you can now use it in your new sample app by integrating it into your *.vcxproj file.  Follow these steps:
 
 1. Ensure your sample app is under the P folder someplace
 2. Add the following to your vcxproj file after the import Microsoft.Cpp.props line:
