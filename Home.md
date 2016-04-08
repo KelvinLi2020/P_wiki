@@ -57,5 +57,5 @@ See [Creating a P program](https://github.com/p-org/P/wiki/Creating-a-P-Program)
 
 Be sure to expand Languages and check the "C++" box.  Also expand "Windows and Web Development" and check the "Universal Windows App Development Tools" box as shown below:
 
-![](https://github.com/p-org/P/wiki/Home/images/vssetup.png)
+![](https://github.com/p-org/P/wiki/images/vssetup.png)
 
