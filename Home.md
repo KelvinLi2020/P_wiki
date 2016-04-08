@@ -52,3 +52,8 @@ regressions will be run against the x86 debug version placed in the Bld\Drops fo
 ### Creating your first P program
 
 See [Creating a P program](https://github.com/p-org/P/wiki/Creating-a-P-Program).
+
+### Visual Studio Setup
+
+Be sure to expand Languages and check the "C++" box.  Also expand "Windows and Web Development" and check the "Universal Windows App Development Tools" box.
+
