@@ -2,7 +2,7 @@
 You must acquire and install these yourself.
 
 1. [Microsoft .NET 4.5](http://www.microsoft.com/en-us/download/details.aspx?id=30653)
-2. Visual Studio 2015 (The Free [Community Edition](https://www.microsoft.com/en-us/download/details.aspx?id=48146) works)
+2. Visual Studio 2015 (The Free [Community Edition](https://www.microsoft.com/en-us/download/details.aspx?id=48146) works, see below for setup instructions)
 
 ### Open-source Library Dependencies
 
