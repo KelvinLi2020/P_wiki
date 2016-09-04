@@ -1,5 +1,5 @@
 ## Dependencies
-Dependencies to build P on Ubuntu are mono(>=4.5) and cmake(>=2.8)
+Dependencies to build P on Ubuntu or OSX are mono(>=4.5) and cmake(>=2.8); Other *nix are untested but should also work.
 
 Currently to install mono with the required version, one has to compile from source; please refer to [mono installation](http://www.mono-project.com/docs/compiling-mono/) for installation instruction for your platform.
 
