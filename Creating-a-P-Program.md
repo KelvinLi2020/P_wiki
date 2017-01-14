@@ -10,8 +10,6 @@ Once you have built the P compiler following [these steps](https://github.com/p-
   `  <PCompile Include="sample.p" />`  
   `</ItemGroup>` 
 
-This will cause the file to be compiled with the pc.exe compiler.  The outputs "program.h, program.c and stubs.c" will be placed in your project folder.  You can then include program.h and program.c in your project.  Copy the stubs.c file and implement it in your main.c file, but do not edit stubs.c because it will get regenerated every time you edit sample.p and then you will lose your edits.
+This will cause the file to be compiled with the pc.exe compiler.  The outputs "sample.h, sample.c, sample.4ml, linker.c and linker.h" will be placed in the "PGenerated" subdirectory of your project folder.  These files will automatically be included in your project.  If you have some model functions you get a stubs.c file also that will show you what you need to implement.  Implement these in a different file (do not edit stubs.c otherwise next time you change your *.p file you will lose your edits to stubs.c).
 
-If you run into trouble, see the samples under ~\P\Src\PrtDist\Samples.  These samples use the above trick already.
-
-**Note**: if the p file is not being rebuilt when you expect it to, try using "rebuild" of the project.
+If you run into trouble, see the samples under ~\P\Src\PrtDist\Samples.  These samples use the above p.targets already.
