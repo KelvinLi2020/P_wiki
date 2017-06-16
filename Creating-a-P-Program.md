@@ -12,4 +12,4 @@ Once you have built the P compiler following [these steps](https://github.com/p-
 
 This will cause the file to be compiled with the pc.exe compiler.  The outputs "sample.h, sample.c, sample.4ml, linker.c and linker.h" will be placed in the "PGenerated" subdirectory of your project folder.  These files will automatically be included in your project.  If you have some model functions you get a stubs.c file also that will show you what you need to implement.  Implement these in a different file (do not edit stubs.c otherwise next time you change your *.p file you will lose your edits to stubs.c).
 
-If you run into trouble, see the samples under ~\P\Src\PrtDist\Samples.  These samples use the above p.targets already.
+If you run into trouble, see the samples under ~\P\Src\Samples.  These samples use the above p.targets already.
