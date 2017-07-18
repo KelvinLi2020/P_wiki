@@ -1,9 +1,9 @@
 ### Tool Dependencies
 You must acquire and install these yourself.
 
-1. [Microsoft .NET 4.5](http://www.microsoft.com/en-us/download/details.aspx?id=30653)
-2. Visual Studio 2015 (The Free [Community Edition](https://www.microsoft.com/en-us/download/details.aspx?id=48146) works, see below for setup instructions)
-3. Windows 10 SDK version 10.0.10586.0
+1. [Microsoft .NET 4.6](http://www.microsoft.com/en-us/download/details.aspx?id=48130)
+2. Visual Studio 2017 (The Free [Community Edition](https://www.visualstudio.com/downloads/) works, see below for setup instructions)
+3. Windows 10 SDK version 10.0.15063.0
 
 ### Open-source Library Dependencies
 
@@ -12,6 +12,7 @@ You must acquire and install these yourself.
 3. Formula (http://formula.codeplex.com/)
 4. Zing (https://github.com/ZingModelChecker/Zing)
 5. AGL (https://github.com/Microsoft/automatic-graph-layout)
+6. PSharp (https://github.com/p-org/PSharp)
 
 These are included in the "Ext" folder.
 
