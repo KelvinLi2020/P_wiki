@@ -25,7 +25,7 @@ These are included in the "Ext" folder.
 
 ### Compiling PLANG from the Command Line
 
-_Release x86 version_ - open a Visual Studio Developer Command Prompt:
+_Release x86 version_ - open a 2017 Visual Studio Developer Command Prompt:
 
 `bld\build.bat release x86`
 
