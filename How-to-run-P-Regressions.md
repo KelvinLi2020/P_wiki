@@ -16,6 +16,8 @@ Test -> Windows -> Test Explorer
 Open TestCaseLoader.cs in UnitTests project and choose an appropriate value of the TestDirs variable (or write your own).
 Build the UnitTests project to discover the tests.
 
+        There's an alternative way to select tests: in the Test Explorer window, highlight the tests that you wish to run (similar to the FileExplorer), right-click, "Run Selected Tests".
+
 5.	Choose Settings for the tests that you want to run:
 UnitTests properties -> Settings
 ResetTests replaces /reset for testP.bat;
