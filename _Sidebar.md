@@ -6,6 +6,8 @@
 
 [Creating a P program](https://github.com/p-org/P/wiki/Creating-a-P-Program)
 
+[Running P Regressions](https://github.com/p-org/P/wiki/How-to-run-P-Regressions)
+
 ### ****P Tutorial****
 
 [Introduction to P Language](https://github.com/p-org/P/wiki/Introduction-to-P-language) 
