@@ -20,7 +20,7 @@ the message is simply enqueued into the input queue of the target machine.
 
 In the rest of this tutorial, 
 we will introduce the features of P through a series of examples.
-We will first present a simple program (Section [#sec-pingpong-program])
+We will first present [a simple program](https://github.com/p-org/P/wiki/The-PingPong-program) 
 that illustrates the basics of the state machine programming model.
 Next, we present a more sophisticated example of a failure detection protocol 
 (Section [#sec-failure-detection-program]) that illustrates advanced features of 
