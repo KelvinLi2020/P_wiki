@@ -2,6 +2,8 @@
 
 [Build P on Windows](https://github.com/p-org/P/wiki/Build-P-on-Windows)
 
+[Build P on Ubuntu and OSX](https://github.com/p-org/P/wiki/Build-P-on-Ubuntu-and-OSX)
+
 ### ****P Tutorial****
 
 [Introduction to P Language](https://github.com/p-org/P/wiki/Introduction-to-P-language) 
