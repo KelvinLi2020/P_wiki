@@ -1,3 +1,5 @@
+[Home](https://github.com/p-org/P/wiki)
+
 ### ****P Tutorial****
 
 [Introduction to P Language](https://github.com/p-org/P/wiki/Introduction-to-P-language) 
