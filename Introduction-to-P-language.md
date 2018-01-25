@@ -29,5 +29,4 @@ it is expected that the parts of the application other than the protocols would 
 host language such as C.
 We will describe the foreign code interface important for interoperability between P code and foreign code written
 in C (Section [#sec-foreign-code]).
-Finally, we will provide an overview of the tools for processing a P program (Section [#sec-tools])
-and conclude with a glossary of all features in the P language (Section [#sec-glossary]).
+Finally, we will provide an overview of the [tools](https://github.com/p-org/P/wiki/P-Tools) for processing a P program.
