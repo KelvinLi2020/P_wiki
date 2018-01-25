@@ -4,6 +4,8 @@
 
 [Build P on Ubuntu and OSX](https://github.com/p-org/P/wiki/Build-P-on-Ubuntu-and-OSX)
 
+[Creating a P program](https://github.com/p-org/P/wiki/Creating-a-P-Program)
+
 ### ****P Tutorial****
 
 [Introduction to P Language](https://github.com/p-org/P/wiki/Introduction-to-P-language) 
