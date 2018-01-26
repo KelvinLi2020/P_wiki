@@ -18,6 +18,6 @@
 
 [**PingPong program**](https://github.com/p-org/P/wiki/PingPong-program)
 
-[**FailureDetector program**](https://github.com/p-org/P/wiki/The-FailureDetector-program)
+[**FailureDetector program**](https://github.com/p-org/P/wiki/FailureDetector-program)
 
 [**P Tools**](https://github.com/p-org/P/wiki/P-Tools)
