@@ -10,7 +10,7 @@
 
 ### ****Testing****
 
-[**Running P Regressions**](https://github.com/p-org/P/wiki/How-to-run-P-Regressions)
+[**Running P Regressions**](https://github.com/p-org/P/wiki/Running-P-Regressions)
 
 ### ****P Tutorial****
 
