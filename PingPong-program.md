@@ -14,7 +14,7 @@ main machine Client {
     start state Init {
         entry {
   	        server = new Server();
-	          raise SUCCESS;   	   
+	        raise SUCCESS;   	   
         }
         on SUCCESS goto SendPing;
     }
@@ -23,7 +23,7 @@ main machine Client {
         entry {
 	          send server, PING, this;
 	          raise SUCCESS;
-	      }
+	}
         on SUCCESS goto WaitPong;
     }
 
@@ -113,8 +113,8 @@ The attentive reader might be wondering how the PingPong program
 begins execution.
 The machine `Client` is annotated with `main` to indicate that program 
 execution begins with a single instance of `Client` entering state `Init`.
-Let us call this machine X. 
-The machine X creates an instance of `Server` and raises `SUCCESS` to enter state 
+Let us call this `Client` instance X. 
+X creates an instance of `Server` and raises `SUCCESS` to enter state 
 `SendPing`.
 Let us call this `Server` instance Y; it begins execution in state `WaitPing`
 of `Server`.
