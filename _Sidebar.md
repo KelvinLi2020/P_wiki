@@ -20,6 +20,6 @@
 
 [**FailureDetector program**](https://github.com/p-org/P/wiki/FailureDetector-program)
 
-[**Test Script Files**](https://github.com/p-org/P/wiki/Writing-Test-Script-Files)
+[**Test Script Files**](https://github.com/p-org/P/wiki/Test-Script-Files)
 
 [**P Tools**](https://github.com/p-org/P/wiki/P-Tools)
