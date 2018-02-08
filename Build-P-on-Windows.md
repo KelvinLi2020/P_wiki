@@ -47,9 +47,6 @@ Then you can load P.sln in Visual Studio, select the "x86" or "x64" build target
 
 See [Running P Regressions](https://github.com/p-org/P/wiki/Running-P-Regressions).
 
-As a side effect, PLANG will be rebuilt and 
-regressions will be run against the x86 debug version placed in the Bld\Drops folder.
-
 ### Creating your first P program
 
 See [Creating a P program](https://github.com/p-org/P/wiki/Creating-a-P-Program).
