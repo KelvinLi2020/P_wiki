@@ -12,7 +12,7 @@
 
 [**PingPong program**](https://github.com/p-org/P/wiki/PingPong-program)
 
-[Hello program](https://github.com/p-org/P/wiki/Hello-program)
+[**Hello program**](https://github.com/p-org/P/wiki/Hello-program)
 
 [**FailureDetector program**](https://github.com/p-org/P/wiki/FailureDetector-program)
 
