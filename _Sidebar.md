@@ -6,6 +6,10 @@
 
 [**Build P on Ubuntu and OSX**](https://github.com/p-org/P/wiki/Build-P-on-Ubuntu-and-OSX)
 
+[**Test Script Files**](https://github.com/p-org/P/wiki/Test-Script-Files)
+
+[**P Tools**](https://github.com/p-org/P/wiki/P-Tools)
+
 ### ****P Tutorial****
 
 [**Introduction to P Language**](https://github.com/p-org/P/wiki/Introduction-to-P-language) 
@@ -15,10 +19,6 @@
 [**Hello program**](https://github.com/p-org/P/wiki/Hello-program)
 
 [**FailureDetector program**](https://github.com/p-org/P/wiki/FailureDetector-program)
-
-[**Test Script Files**](https://github.com/p-org/P/wiki/Test-Script-Files)
-
-[**P Tools**](https://github.com/p-org/P/wiki/P-Tools)
 
 ### ****Testing****
 
