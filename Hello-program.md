@@ -1,4 +1,7 @@
 (in progress)
+
+The "Hello" program shows how to write and compile programs using multiple files. 
+
 ## `Timer` machine
 
 We begin by showing the code for a simple `Timer` machine which represents an abstraction of a basic OS timer. 
