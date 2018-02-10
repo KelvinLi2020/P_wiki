@@ -6,10 +6,6 @@
 
 [**Build P on Ubuntu and OSX**](https://github.com/p-org/P/wiki/Build-P-on-Ubuntu-and-OSX)
 
-### ****Testing****
-
-[**Running P Regressions**](https://github.com/p-org/P/wiki/Running-P-Regressions)
-
 ### ****P Tutorial****
 
 [**Introduction to P Language**](https://github.com/p-org/P/wiki/Introduction-to-P-language) 
@@ -23,3 +19,8 @@
 [**Test Script Files**](https://github.com/p-org/P/wiki/Test-Script-Files)
 
 [**P Tools**](https://github.com/p-org/P/wiki/P-Tools)
+
+### ****Testing****
+
+[**Running P Regressions**](https://github.com/p-org/P/wiki/Running-P-Regressions)
+
