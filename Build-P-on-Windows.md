@@ -49,7 +49,7 @@ See [Running P Regressions](https://github.com/p-org/P/wiki/Running-P-Regression
 
 ### Creating your first P program
 
-See [Creating a P program](https://github.com/p-org/P/wiki/Creating-a-P-Program).
+See P Tutorial in Wiki.
 
 ### Visual Studio Setup
 
