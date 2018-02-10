@@ -6,8 +6,6 @@
 
 [**Build P on Ubuntu and OSX**](https://github.com/p-org/P/wiki/Build-P-on-Ubuntu-and-OSX)
 
-[**Creating a P program**](https://github.com/p-org/P/wiki/Creating-a-P-Program)
-
 ### ****Testing****
 
 [**Running P Regressions**](https://github.com/p-org/P/wiki/Running-P-Regressions)
