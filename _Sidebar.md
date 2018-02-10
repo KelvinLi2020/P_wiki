@@ -1,5 +1,3 @@
-[**Home**](https://github.com/p-org/P/wiki)
-
 ### ****Getting Started****
 
 [**Build P on Windows**](https://github.com/p-org/P/wiki/Build-P-on-Windows)
