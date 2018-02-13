@@ -1,6 +1,6 @@
 (in progress)
 
-The "Hello" program shows how to write and compile programs using multiple files. 
+The "Hello" program shows how to write and compile P programs using multiple files. In this example, the program consist of the following files: Main.p, 
 
 ## `Timer` machine
 
