@@ -18,6 +18,8 @@
 
 [**FailureDetector program**](https://github.com/p-org/P/wiki/FailureDetector-program)
 
+[**Modules**](https://github.com/p-org/P/wiki/FailureDetector-program)
+
 ### ****Testing****
 
 [**Running P Regressions**](https://github.com/p-org/P/wiki/Running-P-Regressions)
