@@ -51,12 +51,12 @@ machine Hello
 }
 ```
 The `Hello` machine starts by creating a timer with the `CreatetTimer` function declared in the `Timer` machine below. The address of the `Hello` machine is passed to the `Timer` machine as the parameter `this` to the `CreateTimer` function. The `CreateTimer` function returns an address of the `Timer` machine created, which is stored in the variable `timer` of type `TimerPtr`. The `TimerPtr` type is declared in the `Timer` machine as an alias of the `machine` type.
-The  `Hello` machine then moves into the `GetInput` state. In that state, `Continue` function (declared below) returns a non-deterministic value of type `bool` (either `true` or `false`), which is assigned to the variable `b`. The non-deterministic value is denoted in P by the `$` symbol. Depending on the value of `b`, the machine either goes into the `PrintHello` state, or into the `Stop` state.  In the `PrintHello` state, the timer is started, by calling the `StartTimer` function (declared in the `Timer` machine), which has two parameters: timer machine address and timer interval. Upon receiving the `TIMEOUT` event (declared in the `Timer` machine), the `Hello` machine prints "Hello" and goes back into the `GetInput` state. Here, the construct `on TIMEOUT goto GetInput with { print "Hello\n"; }` is an example of a `goto` statement with an attached code block, which is executed before transitioning to the destination state.
+The  `Hello` machine then moves into the `GetInput` state. In that state, `Continue` function (see below) returns a non-deterministic value of type `bool` (either `true` or `false`), which is assigned to the variable `b`. The non-deterministic value is denoted in P by the `$` symbol. Depending on the value of `b`, the machine either goes into the `PrintHello` state, or into the `Stop` state.  In the `PrintHello` state, the timer is started by calling the `StartTimer` function (declared in the `Timer` machine, see below), which has two parameters: timer machine address and timer interval. Upon receiving the `TIMEOUT` event (declared in the `Timer` machine), the `Hello` machine prints "Hello" and goes back into the `GetInput` state. Here, the construct `on TIMEOUT goto GetInput with { print "Hello\n"; }` is an example of a `goto` statement with an attached code block, which is executed before transitioning to the destination state.
 The `Stop` state is a deadlock state; see the declaration of the `StopProgram` function below.
 
 ## `Timer` machine
 
-The `Timer` machine represents an abstraction of a basic OS timer. 
+The `Timer` machine represents an abstraction of a basic OS timer. For more details on the `receives` and `sends` annotations, see section "Modules" of the Tutorial.
 
 ```
 // Timer.p
@@ -79,6 +79,7 @@ fun StartTimer(timer: TimerPtr, time: int) {
 }
 
 machine Timer
+//receives/sends annotations:
 receives START;
 sends TIMEOUT;
 {
@@ -103,9 +104,6 @@ sends TIMEOUT;
   }
 }
 ```
-
-
-
 ## `Continue` header and function declaration
 ```
 //ContinueHeader.p
