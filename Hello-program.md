@@ -1,13 +1,18 @@
 (in progress)
 
-The "Hello" program shows how to write and compile P programs using multiple files. In this example, the program consists of the following files: `Main.p`, `Continue.p`, `Timer.p`, `Env.p`, `TestScript.p`. This example also demonstrates non-determinism in P and shows how to use PTester to check a liveness property of a program.
+New P features:
+functions
+non-determ. value
+goto + "with"
+
+The "Hello" program shows how to write (and compile) P programs by using multiple files, in particular, how a machine can use a function or an event declared in another file. This example also demonstrates non-determinism in P and shows how to use PTester to check a liveness property of a program.
+In this example, the program consists of the following files: `Main.p`, `Continue.p`, `Timer.p`, `Env.p`, `TestScript.p`.
 
 ## `Hello` machine
 
 This is the main machine of the "Hello" example. 
-
-
 ```
+//Main.p
 machine Hello
 {
   var timer: TimerPtr;
@@ -45,8 +50,9 @@ machine Hello
   }
 }
 ```
-The `Hello` machine starts by creating a timer with the `CreatetTimer` function declared in the `Timer` machine below. The ID of the `Hello` machine is passed to the `Timer` machine as the parameter `this` to the `CreateTimer` function. The `CreateTimer` function returns an ID of the `Timer` machine created, which is stored in the variable `timer` of type `TimerPtr`. The `TimerPtr` type is declared in the `Timer` machine as an alias of the `machine` type.
-The  `Hello` machine then moves into the `GetInput` state. In that state, `Continue` function (declared below) returns a non-deterministic value of type `bool` (either `true` or `false`), which is assigned to the variable `b`. Depending on the value of `b`, the machine either goes into the `PrintHello` state, or into the `Stop` state.  In the `PrintHello` state, the timer is started, by calling the `StartTimer` function (declared in the `Timer` machine), which has two parameters: timer machine ID and timer interval. Upon receiving the `TIMEOUT` event (declared in the `Timer` machine), the `Hello` machine prints "Hello" and goes back into the `GetInput` state. The `Stop` state is a deadlock state; see the declaration of the `StopProgram` function below.
+The `Hello` machine starts by creating a timer with the `CreatetTimer` function declared in the `Timer` machine below. The address of the `Hello` machine is passed to the `Timer` machine as the parameter `this` to the `CreateTimer` function. The `CreateTimer` function returns an address of the `Timer` machine created, which is stored in the variable `timer` of type `TimerPtr`. The `TimerPtr` type is declared in the `Timer` machine as an alias of the `machine` type.
+The  `Hello` machine then moves into the `GetInput` state. In that state, `Continue` function (declared below) returns a non-deterministic value of type `bool` (either `true` or `false`), which is assigned to the variable `b`. The non-deterministic value is denoted in P by the `$` symbol. Depending on the value of `b`, the machine either goes into the `PrintHello` state, or into the `Stop` state.  In the `PrintHello` state, the timer is started, by calling the `StartTimer` function (declared in the `Timer` machine), which has two parameters: timer machine address and timer interval. Upon receiving the `TIMEOUT` event (declared in the `Timer` machine), the `Hello` machine prints "Hello" and goes back into the `GetInput` state. Here, the construct `on TIMEOUT goto GetInput with { print "Hello\n"; }` is an example of a `goto` statement with an attached code block, which is executed before transitioning to the destination state.
+The `Stop` state is a deadlock state; see the declaration of the `StopProgram` function below.
 
 ## `Timer` machine
 
