@@ -18,7 +18,7 @@
 
 [**FailureDetector program**](https://github.com/p-org/P/wiki/FailureDetector-program)
 
-[**Modules**](https://github.com/p-org/P/wiki/FailureDetector-program)
+[**Modules**](https://github.com/p-org/P/wiki/Modules)
 
 ### ****Testing****
 
