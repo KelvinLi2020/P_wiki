@@ -11,6 +11,7 @@ transitions on "null" event,
 
 The "Hello" program shows how to write (and compile) P programs by using multiple files, in particular, how a machine can use a function or an event declared in another file. This example also demonstrates non-determinism in P and shows how to use PTester to check a liveness property of a program.
 In this example, the program consists of the following files: `Main.p`, `Continue.p`, `Timer.p`, `Env.p`, `TestScript.p`.
+You can find the `Hello` example [here](https://github.com/p-org/P/tree/master/Tutorial/Hello).
 
 ## `Hello` machine
 
@@ -60,7 +61,7 @@ The `Stop` state is a deadlock state; see the declaration of the `StopProgram` f
 
 ## `Timer` machine
 
-The `Timer` machine represents an abstraction of a basic OS timer. For more details on the `receives` and `sends` annotations, see section "Modules" of the Tutorial.
+The `Timer` machine represents an abstraction of a basic OS timer. For more details on the `receives` and `sends` annotations, see section ["Modules"](https://github.com/p-org/P/wiki/Modules) of the Tutorial.
 
 ```
 // Timer.p
@@ -133,8 +134,35 @@ fun StopProgram()
     
 }
 ```
-## Test Script
+
+## Compilation and testing
+To compile the `Hello` example for testing by PTester and to see the files generated after each step, run [build.cmd](https://github.com/p-org/P/blob/master/Tutorial/Hello/build.cmd) script found in the `Hello` example folder.
+The script contains:
+* compilation of the dependencies: Timer.p and Env.p
+* compilation of the `Hello` machine - files `Main.p` and `Continue.p` - with the dependencies
+* linking command, which uses a test script `TestScript.p`
+* command for running PTester - `pt.exe` - for the generated DLL.
+
+The `TestScript.p` file specifies the main machine name (`Hello`) and other machines involved in the test (`Timer` in this example) for linking:
 ```
 //TestScript.p
 test Test0: main Hello in { Hello, Timer };
+```
+This is a simplest version of a test script. In this case, its only purpose is to declare the `Hello` machine as the main machine, and to indicate that the single test declared in the script file involves another machine - `Timer`. A test script in general could contain a module declaration, declarations of multiple tests and properties that the PTester will check. For more on modules, interfaces and test scripts, see section ["Modules"](https://github.com/p-org/P/wiki/Modules) of the Tutorial.
+
+Here's the output of running the PTester on the `Hello` program:
+```
+pt.exe /psharp Test0.dll
+... Task 0 is using 'Random' strategy (seed:).
+..... Iteration #1
+Bugs found: 1
+<CreateLog> Created Machine Hello-1
+<CreateLog> Main machine Hello was created by machine Runtime
+<StateLog> Machine Hello-1 entering State Hello_Init
+<FunctionLog> Machine Hello-1 executing Function CreateTimer
+
+ERROR: Liveness violation
+Dumping coverage information
+... Writing coverage.txt
+... Writing coverage.dgml
 ```
