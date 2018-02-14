@@ -4,9 +4,9 @@ New P features:
 functions, 
 non-determ. value, 
 goto + "with", 
-receives/sends annotations, 
-on null goto WaitForReq, 
-ignore 
+"receives"/"sends" annotations, 
+transitions on "null" event, 
+"ignore" 
 
 
 The "Hello" program shows how to write (and compile) P programs by using multiple files, in particular, how a machine can use a function or an event declared in another file. This example also demonstrates non-determinism in P and shows how to use PTester to check a liveness property of a program.
