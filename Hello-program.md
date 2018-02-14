@@ -4,7 +4,10 @@ New P features:
 functions, 
 non-determ. value, 
 goto + "with", 
-receives/sends annotations
+receives/sends annotations, 
+on null goto WaitForReq, 
+ignore 
+
 
 The "Hello" program shows how to write (and compile) P programs by using multiple files, in particular, how a machine can use a function or an event declared in another file. This example also demonstrates non-determinism in P and shows how to use PTester to check a liveness property of a program.
 In this example, the program consists of the following files: `Main.p`, `Continue.p`, `Timer.p`, `Env.p`, `TestScript.p`.
@@ -105,6 +108,10 @@ sends TIMEOUT;
   }
 }
 ```
+The construct `ignore START;` indicates that the `WaitForTimeout` state does not handle the `START` event; it is used to avoid the "unhandled event" exception that P runtime would raise otherwise.
+The construct `on null goto WaitForReq...` uses a default event `null` and indicates a transition into the `WaitForReq` state when the `Timer` machine's event queue has no other events that are handled by the `WaitForTimeout` state. 
+
+
 ## `Continue` header and function declaration
 ```
 //ContinueHeader.p
