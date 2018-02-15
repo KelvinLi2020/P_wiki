@@ -10,7 +10,7 @@ The failure detector uses an OS timer to implement the bounded wait for the `PON
 ## `Timer` machine
 
 We begin by showing the code for the `Timer` machine.
-The `Timer` machine is declared using the keyword `model` to indicate that it represents
+The `Timer` machine represents
 an abstraction of the OS timer. 
 This abstraction is used to test the interaction of the failure detector protocol 
 with the OS.
@@ -28,7 +28,7 @@ event CANCEL_SUCCESS: machine;
 event CANCEL_FAILURE: machine;
 // local event for control transfer within timer
 event UNIT;
-model Timer {
+machine Timer {
     var client: machine;
     start state Init {
         entry (payload: machine) {
@@ -62,20 +62,20 @@ model Timer {
 }
 ```
 
-Each instance of a `Timer` machine has a client whose address is stored in the `client` variable.
+Each instance of the `Timer` machine has a client whose address is stored in the `client` variable.
 This client sends `START` and `CANCEL` events to the timer machine which responds
 via `TIMEOUT`, `CANCEL_SUCCESS`, or `CANCEL_FAILURE` events.
 
 The `Timer` machine has three states.
-It starts executing in state `Init` where it initializes the `client` variable
-with the client's address obtained by looking up `paylaod`. 
+It starts executing in the state `Init` where it initializes the `client` variable
+with the client's address obtained by looking up `payload`. 
 It waits in state `WaitForReq` for a request from the client, responding 
-with `CANCEL_FAILURE` to a `CANCEL` event and moving to `WaitForCancel` state on `START` event.
+with `CANCEL_FAILURE` to `CANCEL` event and moving to `WaitForCancel` state on `START` event.
 
 In `WaitForCancel` state, any `START` event is dequeued and dropped without any action 
-(indicated by `ignore` keyword).
-The response to a `CANCEL` event is nondeterministic to model the race condition between 
-the arrival of a `CANCEL` event from the client and the elapse of the timer.
+(indicated by the `ignore` keyword).
+The response to `CANCEL` event is nondeterministic, to model the race condition between 
+the arrival of `CANCEL` event from the client and the elapse of the timer.
 This nondeterminism is indicated by an `if` statement guarded by `$`.
 The then-branch models the case when the `CANCEL` event arrives before the timer elapses;
 in this case, `CANCEL_SUCCESS` is sent back to the client.
