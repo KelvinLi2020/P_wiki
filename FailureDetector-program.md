@@ -26,16 +26,13 @@ event CANCEL;
 event TIMEOUT: machine;
 event CANCEL_SUCCESS: machine;
 event CANCEL_FAILURE: machine;
-// local event for control transfer within timer
-event UNIT;
 machine Timer {
     var client: machine;
     start state Init {
         entry (payload: machine) {
             client = payload;
-            raise UNIT;  // goto handler of UNIT
+            goto WaitForReq; 
         }
-        on UNIT goto WaitForReq;
     }
 
     state WaitForReq {
@@ -76,7 +73,7 @@ In `WaitForCancel` state, any `START` event is dequeued and dropped without any 
 (indicated by the `ignore` keyword).
 The response to `CANCEL` event is nondeterministic, to model the race condition between 
 the arrival of `CANCEL` event from the client and the elapse of the timer.
-This nondeterminism is indicated by an `if` statement guarded by `$`.
+This non-determinism is indicated by an `if` statement guarded by `$`.
 The then-branch models the case when the `CANCEL` event arrives before the timer elapses;
 in this case, `CANCEL_SUCCESS` is sent back to the client.
 The else-branch models the case when the timer fires before the `CANCEL` event arrives;
@@ -89,7 +86,7 @@ The event `null` is a special event that is internally generated in the runtime 
 ## Failure detection protocol
 
 The failure detection protocol depends on the `Timer` machines and is based on 
-the interaction of two kinds of machines---`FailureDetector` and `Node`---shown below.
+the interaction of two kinds of machines - `FailureDetector` and `Node` - shown below.
 The code of the `FailureDetector` machine shows more features of P, including
 container types, functions, `do` actions, `push` transitions and pop statements, 
 deferred events, and monitors.
@@ -151,6 +148,7 @@ event UNREGISTER_CLIENT: machine;
 // failure notification to client
 event NODE_DOWN: machine;
 // local events for control transfer within failure detector
+event UNIT;
 event ROUND_DONE;
 event TIMER_CANCELED;
 
@@ -169,8 +167,8 @@ machine FailureDetector {
             timer = new Timer(this);
             raise UNIT;
         }
-        on REGISTER_CLIENT do (payload: machine) { clients[payload] = true; };
-        on UNREGISTER_CLIENT do (payload: machine) { if (payload in clients) clients -= payload; };
+        on REGISTER_CLIENT do (payload: machine) { clients[payload] = true; }
+        on UNREGISTER_CLIENT do (payload: machine) { if (payload in clients) clients -= payload; }
         on UNIT push SendPing;
     }
 
@@ -189,27 +187,27 @@ machine FailureDetector {
                     raise TIMER_CANCELED;
                 }
             }
-        };
+        }
         on TIMER_CANCELED push WaitForCancelResponse;
         on TIMEOUT do {
             // one attempt is done
             attempts = attempts + 1;
             // maximum number of attempts per round == 2
             if (sizeof(responses) < sizeof(alive) && attempts < 2) {
-                raise UNIT;     // try again by re-entering SendPing
+                goto SendPing;     // try again by re-entering SendPing
             } else {
                 Notify();       // send any failure notifications
                 raise ROUND_DONE;
             }
         };
-        on UNIT goto SendPing;
+        //on UNIT goto SendPing;
         on ROUND_DONE goto Reset;
     }
 
     state WaitForCancelResponse {
         defer TIMEOUT, PONG;
-        on CANCEL_SUCCESS do { raise ROUND_DONE; };
-        on CANCEL_FAILURE do { pop; };
+        on CANCEL_SUCCESS do { raise ROUND_DONE; }
+        on CANCEL_FAILURE do { pop; }
     }
 
     state Reset {
