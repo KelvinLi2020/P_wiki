@@ -1,5 +1,3 @@
-FailureDetector program { #sec-failure-detection-program }
-
 We look at a more sophisticated program to illustrate other features of the P language.
 This program implements a failure detection protocol.
 A failure detector state machine is given a list of machines,
