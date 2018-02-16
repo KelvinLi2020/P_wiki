@@ -40,7 +40,7 @@ machine Timer {
     state WaitForReq {
         on CANCEL goto WaitForReq with {
             send client, CANCEL_FAILURE, this;
-        };
+        }
         on START goto WaitForCancel;
     }
 
@@ -53,10 +53,10 @@ machine Timer {
                 send client, CANCEL_FAILURE, this;
                 send client, TIMEOUT, this;
             }
-        };
+        }
         on null goto WaitForReq with {
 	          send client, TIMEOUT, this;
-        };
+        }
     }
 }
 ```
@@ -137,8 +137,6 @@ failure notifications are sent.
 
 ```
 // FailureDetector.p
-include "Timer.p"
-
 // request from failure detector to node 
 event PING: machine;
 // response from node to failure detector
@@ -196,12 +194,13 @@ machine FailureDetector {
             attempts = attempts + 1;
             // maximum number of attempts per round == 2
             if (sizeof(responses) < sizeof(alive) && attempts < 2) {
-                goto SendPing;     // try again by re-entering SendPing
+                //raise UNIT;     // try again by re-entering SendPing
+				goto SendPing;
             } else {
                 Notify();       // send any failure notifications
                 raise ROUND_DONE;
             }
-        };
+        }
         //on UNIT goto SendPing;
         on ROUND_DONE goto Reset;
     }
@@ -227,7 +226,8 @@ machine FailureDetector {
         var i: int;
         i = 0;
         while (i < sizeof(nodes)) {
-            alive += (nodes[i], true);
+            //alive += (nodes[i], true);
+			alive[nodes[i]] = true;
             i = i + 1;
         }
     }
@@ -237,7 +237,7 @@ machine FailureDetector {
         i = 0;
         while (i < sizeof(nodes)) {
             if (nodes[i] in alive && !(nodes[i] in responses)) {
-                monitor M_PING, nodes[i];
+                announce M_PING, nodes[i];
                 send nodes[i], PING, this;
             }
             i = i + 1;
@@ -265,13 +265,13 @@ machine Node {
     start state WaitPing {
         on PING do (payload: machine) {
             send payload, PONG, this;
-        };
+        }
     }
 }
 
 event M_PING: machine;
 
-spec Safety monitors M_PING, PONG {
+spec Safety observes M_PING, PONG {
     var pending: map[machine, int];
     
     start state Init {
@@ -280,12 +280,12 @@ spec Safety monitors M_PING, PONG {
                 pending[payload] = 0;
             pending[payload] = pending[payload] + 1;
             assert (pending[payload] <= 3);
-        };
+        }
         on PONG do (payload: machine) {
             assert (payload in pending);
             assert (0 < pending[payload]);
             pending[payload] = pending[payload] - 1;
-        };
+        }
     }
 }
 ```
@@ -357,60 +357,11 @@ the payload of the `M_PING` event is the identifier of the target node.
 Using the payloads of `M_PING` and `PONG`, the `Safety` machine is able to 
 implement its per-node check.
 
-## Test driver
-
-Machine `Driver` shows how to write a test driver to test the failure detection protocol.
-This machine models a client of the protocol.
-This client creates a few nodes to be monitored, creates an instance of the `Safety`
-monitor, and instance of the `Liveness` monitor (explained later), an instance of `FailureDetector`, registers itself with the created instance of 
-`FailureDetector`, and then enqueues the special `halt` event to each node created by it.
-The `halt` event is special because termination of a machine due to unhandled `halt` event 
-is expected behavior and does not raise UnhandledEvent exception.
-Since the `Node` machine does not handle the `halt` event, it will be terminated.
-Thus, the `Driver` machine creates a finite test program for the failure detection protocol.
-
+## Liveness
 ```
-// TestDriver.p
-include "FailureDetector.p"
-
-main model Driver {
-    var fd: machine;
-    var nodeseq: seq[machine];
-    var nodemap: map[machine, bool];
-    
-    start state Init {
-        entry {
-            Init(0, null);
-            monitor M_START, nodemap;
-            fd = new FailureDetector(nodeseq);
-            send fd, REGISTER_CLIENT, this;
-            Fail(0);
-        }
-        ignore NODE_DOWN;
-    }
-    
-    fun Init(i: int, n: machine) {
-        i = 0;
-        while (i < 2) {
-            n = new Node();
-            nodeseq += (i, n);
-            nodemap += (n, true);
-            i = i + 1;
-        }
-    }
-    
-    fun Fail(i: int) {
-        i = 0;
-        while (i < 2) {
-            send nodeseq[i], halt;
-            i = i + 1;
-        }
-    }
-}
-
 event M_START: map[machine, bool];
 
-spec Liveness monitors M_START, NODE_DOWN {
+spec Liveness observes M_START, NODE_DOWN {
     var nodes: map[machine, bool];
     start state Init {
         on M_START goto Wait;
@@ -424,7 +375,7 @@ spec Liveness monitors M_START, NODE_DOWN {
             nodes -= payload;
             if (sizeof(nodes) == 0)
                 raise UNIT;
-        };
+        }
         on UNIT goto Done;
 	  }
     
@@ -432,25 +383,6 @@ spec Liveness monitors M_START, NODE_DOWN {
 }
 ```
 
-Even though the test program encoded by machine `Driver` is finite, it can generate an
-enormous number of behaviors resulting primarily from the concurrent execution of a 
-number of state machines---one `Driver` machine, two `Node` machines, one `FailureDetector`
-machine, and one `Timer` machine.
-At each step in an execution when a non-local action (creation of a machine or sending
-an event from one machine to another) action is about to execute, 
-there is a choice of picking any one of these machines to execute. 
-The testing tool underlying P systematically enumerates these behaviors;
-If an exception is raised or an assertion is violated, a path to the error is reported to the 
-programmer. 
-
-The style of specifying test programs in the manner described above 
-results in a compact description of a large set of test executions, considerably
-reducing programmer effort in specifying and generating them.
-For example, even though the `Driver` machine sends a `halt` event to each `Node`
-machine immediately after creating them, these send actions may be arbitrarily "delayed"
-if a nondeterministic scheduler chooses to execute the other machines 
-in the program instead.
-The systematic testing tool underlying P has the capability to enumerate such behaviors. 
 
 In addition to safety specifications, 
 P also allows programmers to express liveness specifications 
