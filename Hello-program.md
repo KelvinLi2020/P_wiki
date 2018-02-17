@@ -98,7 +98,7 @@ sends TIMEOUT;
 }
 ```
 The construct `ignore START;` indicates that the `WaitForTimeout` state does not handle the `START` event; it is used to avoid the "unhandled event" exception that P runtime would raise otherwise.
-The construct `on null goto WaitForReq...` uses a default event `null` and indicates a transition into the `WaitForReq` state when the `Timer` machine's event queue has no other events that are handled by the `WaitForTimeout` state. 
+The last event handler `on null goto WaitForReq with { ... }` transfers the control to WaitForReq, modeling the case when the timer has elapsed, if neither of the other event handlers in WaitForTimeout can execute. The event null is a special event that is internally generated in the runtime in this case.
 
 
 ## `Continue` function declaration
