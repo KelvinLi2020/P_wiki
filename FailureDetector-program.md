@@ -81,7 +81,7 @@ in this case, `CANCEL_SUCCESS` is sent back to the client.
 The else-branch models the case when the timer fires before the `CANCEL` event arrives;
 in this case, `CANCEL_FAILURE` and `TIMEOUT` are sent back to the client one after another.
 The last event handler `on null goto WaitForReq with { ... }` transfers the control 
-to `WaitForReq`, modeling that the timer has elapsed,
+to `WaitForReq`, modeling that the case when timer has elapsed,
 if neither of the other event handlers in `WaitForCancel` can execute.
 The event `null` is a special event that is internally generated in the runtime in this case.
 
@@ -124,15 +124,15 @@ We later explain this use of a `push` transition in handling the interaction bet
 
 State `SendPing` illustrates several new features of P.
 When this state is entered, its entry block sends `PING` events to 
-all alive nodes that have not yet responded with a `PONG`
+all alive nodes that have not yet responded with a `PONG`,
 and starts a timer with a timeout value of 100ms.
 The machine stays in this state collecting `PONG` responses 
-until either all alive nodes have responded or a `TIMEOUT` event is dequeued.
+until either all alive nodes have responded, or a `TIMEOUT` event is dequeued.
 If each alive node has responded with a `PONG` before `TIMEOUT` is dequeued, 
 the timer is canceled and the event `TIMER_CANCELED` is raised. 
 Otherwise, the handler of `TIMEOUT` is executed to determine whether 
 another attempt to reach the potentially alive nodes should be made. 
-If number of attempts has reached the maximum number of attempts (2 in our code),
+If the number of attempts has reached the maximum number of attempts (2 in our code),
 failure notifications are sent.
 
 ```
@@ -193,15 +193,13 @@ machine FailureDetector {
             // one attempt is done
             attempts = attempts + 1;
             // maximum number of attempts per round == 2
-            if (sizeof(responses) < sizeof(alive) && attempts < 2) {
-                //raise UNIT;     // try again by re-entering SendPing
-				goto SendPing;
+            if (sizeof(responses) < sizeof(alive) && attempts < 2) {     
+		goto SendPing;  // try again by re-entering SendPing
             } else {
                 Notify();       // send any failure notifications
-                raise ROUND_DONE;
+                goto Reset;
             }
         }
-        //on UNIT goto SendPing;
         on ROUND_DONE goto Reset;
     }
 
@@ -295,7 +293,7 @@ The handler for `PONG` in `SendPing` is indicated by
 the code `on PONG do { ... }`, which states that the code block
 between the braces must be executed when `PONG` is dequeued. 
 Control remains in the state `SendPing` subsequent to this execution.
-This control primitive is useful for executing an event-driven
+This event handler is useful for executing an event-driven
 loop in a state, such as the one in `SendPing` for 
 collecting `PONG` responses.
 
@@ -306,12 +304,12 @@ because all alive nodes have responded with `PONG`,
 the handler `on TIMER_CANCELED push WaitForCancelResponse` 
 pushes the state `WaitForCancelResponse` on top of `SendPing`.
 The state `WaitForCancelResponse` handles the interaction with the timer 
-subsequent to its cancelation, returning control back to `SendPing` afterwards.
+subsequent to its cancellation, returning control back to `SendPing` afterwards.
 The timer may respond with either `CANCEL_SUCCESS` or `CANCEL_FAILURE`.
-In the former case, the event `ROUND_DONE` is raised which is not handled
-in state `TIMER_CANCELED` causing it to be popped and letting `SendPing` 
+In the former case, the event `ROUND_DONE` is raised, which is not handled
+in state `TIMER_CANCELED`, causing it to be popped and letting `SendPing` 
 handle that event.
-In the latter case, the `pop` statement executes causing `TIMER_CANCELED` 
+In the latter case, the `pop` statement executes, causing `TIMER_CANCELED` 
 to be popped and a fresh event being dequeued in state `SEND_PING`.
 
 The state `WaitForCancelResponse` uses the code `defer TIMEOUT, PONG` 
@@ -334,25 +332,25 @@ Therefore, in state `WaitForCancelResponse`, `REGISTER_CLIENT` and `UNREGISTER_C
 may be dequeued but `TIMEOUT` and `PONG` may not.
 
 P allows programmers to write assertions in code blocks to express invariants 
-on state local to a machine.
-It is often useful to be able to write assertions about state across machines in a program.
+on a state local to a machine.
+It is often useful to be able to write assertions about states across machines in a program.
 P provides monitors to write such specifications.
-Consider the problem of specifying that the difference in the number of `PING` events sent
+Consider the problem of specifying a property that the difference in the number of `PING` events sent
 to any node can never be three more than the number of `PONG` events sent by it.
 We can code this specification using the state machine `Safety`.
 This machine maintains the difference between the number of `PING` and `PONG` events 
 per node in a map and asserts that this number can be at most three.
-A specification state machine must explicitly mention the events monitored by it. 
-For example, the `Safety` specification monitors `M_PING` and `PONG` events. 
-An event sent from one machine to another using the `send` statment is automatically
-routed to any specification that monitors it.
-Although monitored events are most commonly program events 
+A specification state machine must explicitly mention the events observed by it. 
+For example, the `Safety` specification observes `M_PING` and `PONG` events. 
+An event sent from one machine to another using the `send` statement is automatically
+routed to any specification that observes it.
+Although observedd events are most commonly represent program events 
 sent from one state machine to another, sometimes it is important to introduce events 
-specifically for the purpose of monitoring.
+specifically for the purpose of observing.
 The event `M_PING` is such an event.
-This event is generated by the failure detector using the statment
+This event is generated by the failure detector using the statement
 `monitor M_PING, nodes[i]` right before it sends a `PING` event to `nodes[i]`. 
-Unlike the `PING` event whose payload is the identifier of the failure detector,
+Unlike the `PING` event, whose payload is the identifier of the failure detector,
 the payload of the `M_PING` event is the identifier of the target node.
 Using the payloads of `M_PING` and `PONG`, the `Safety` machine is able to 
 implement its per-node check.
@@ -382,51 +380,48 @@ spec Liveness observes M_START, NODE_DOWN {
 	  state Done { }
 }
 ```
-
-
 In addition to safety specifications, 
-P also allows programmers to express liveness specifications 
+P also allows programmers to express liveness specifications, 
 such as absence of deadlocks and livelocks in the test program.
 The simplest characterization of a deadlock is a finite execution at the end of which 
 no machine is enabled, that is, every machine is either halted or blocked waiting for 
 an event.
 However, not all such executions would typically be considered erroneous.
-To further refine the specification of bad behaviors, a liveness monitor allows 
-certain states to be marked as `hot` states; if a monitor is in a `hot` state
+To further refine the specification of bad behaviors, a liveness specification allows 
+certain states to be marked as `hot` states; if a specification machine is in a `hot` state
 at the end of a deadlock execution, this execution is reported as an error.
 
-As an example, consider the `Liveness` monitor in the figure above.
-This monitor starts in the state `Init` and transitions to state `Wait` upon receiving
+As an example, consider the `Liveness` spec in the figure above.
+This spec machine starts in the state `Init` and transitions to the state `Wait` upon receiving
 the event `M_START`.
-In the entry function of `Wait`, the machine with the `nodes` variable 
+In the entry function of `Wait`, the `nodes` variable is
 initialized to the set of addresses of all `Node` machines in the program. 
-Whenever the `Driver` machine receives a `NODE_DOWN` event from the `FailureDetector`
-machine, it forwards that event to the `Liveness` monitor which then removes 
-the machine whose failure was detected from the set in `nodes`.
-The monitor exits the hot `Init` state only when all `nodes` becomes empty, i.e.,
-when the failure of all `Node` machines has been detected.
-Thus, this monitor expresses the specification that failure of every `Node` machine
-must be eventually detected, a reasonable expectation since the `Driver` machine 
-sends a `halt` event to every `Node` machine. 
+Whenever a `NODE_DOWN` event from the `FailureDetector`
+machine is observed by the spec machine, it removes 
+the machine whose failure was detected from the `nodes` map.
+The spec machine exits the hot `Init` state only when the `nodes` map becomes empty, i.e.,
+when the failures have been detected for all `Node` machines.
+Thus, this spec expresses the property that failure of every `Node` machine
+must be eventually detected. 
 
 Occasionally, a violation of liveness results not from a deadlock in a finite execution
-but from an infinite execution in which one or more machines each may be taking steps 
+but from an infinite execution in which one or more machines may be taking steps 
 but program is not making progress as a whole.
-A liveness monitor with hot states specifies such infinite erroneous behaviors also;
+A liveness spec with hot states handles such infinite erroneous behaviors as well;
 an infinite execution is erroneous if 
-the monitor is in a hot state infinitely often in the execution.
-With only hot states, a monitor can specify "eventually" properties, 
+the spec machine is in a hot state infinitely often in the execution.
+With only hot states, a spec machine can define "eventually" properties, 
 i.e., something good happens eventually.
-To generalize liveness monitors to "infinitely-often" properties,
+To generalize liveness specs to "infinitely-often" properties,
 i.e., something good happens repeatedly,
 P supports the notion of `cold` states as well. 
-A monitor with both hot and cold states specifies an erroneous infinite execution as one 
+A spec machine with both hot and cold states specifies an erroneous infinite execution as the one 
 which visits some hot state infinitely often 
 and visits cold states only finitely often.
 
 To understand the meaning of hot and cold states, it is helpful to think
 in terms of the temperature of an execution.
-Every step in the execution at the end of which the liveness monitor is in a hot state 
+Every step in the execution at the end of which the liveness spec machine is in a hot state 
 increases the temperature of the execution by a small amount.
 Entering a cold state resets the temperature to zero.
 An (infinite) execution is erroneous if its temperature goes to infinity. 
