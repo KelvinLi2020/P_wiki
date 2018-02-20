@@ -20,9 +20,9 @@ the message is simply enqueued into the input queue of the target machine.
 
 In the rest of this tutorial, 
 we will introduce the features of P through a series of examples.
-We will first present [a simple program](https://github.com/p-org/P/wiki/The-PingPong-program) 
+We will first present [a simple program](https://github.com/p-org/P/wiki/PingPong-program) 
 that illustrates the basics of the state machine programming model.
-Next, we present a more sophisticated example of [a failure detection protocol](https://github.com/p-org/P/wiki/The-FailureDetector-program) that illustrates advanced features of 
+Next, we present a more sophisticated example of [a failure detection protocol](https://github.com/p-org/P/wiki/FailureDetector-program) that illustrates advanced features of 
 the P language.
 P is a domain-specific language for implementing protocols in an asynchronous application;
 it is expected that the parts of the application other than the protocols would be written in a 
