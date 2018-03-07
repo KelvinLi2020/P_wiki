@@ -5,17 +5,6 @@ You must acquire and install these yourself.
 2. Visual Studio 2017 (The Free [Community Edition](https://www.visualstudio.com/downloads/) works, see below for setup instructions)
 3. Windows 10 SDK version 10.0.15063.0
 
-### Open-source Library Dependencies
-
-1. Gardens Point Scanner Generator (http://gplex.codeplex.com/)
-2. Gardens Point Parser Generator (http://gppg.codeplex.com/)
-3. Formula (http://formula.codeplex.com/)
-4. Zing (https://github.com/ZingModelChecker/Zing)
-5. AGL (https://github.com/Microsoft/automatic-graph-layout)
-6. PSharp (https://github.com/p-org/PSharp)
-
-These are included in the "Ext" folder.
-
 ### Getting the bits
 
    `mkdir git`  
@@ -57,3 +46,13 @@ Be sure to expand Languages and check the "C++" box.  Also expand "Windows and W
 
 ![](https://github.com/p-org/P/wiki/images/vssetup.png)
 
+### Open-source Library Dependencies
+
+1. Gardens Point Scanner Generator (http://gplex.codeplex.com/)
+2. Gardens Point Parser Generator (http://gppg.codeplex.com/)
+3. Formula (http://formula.codeplex.com/)
+4. Zing (https://github.com/ZingModelChecker/Zing)
+5. AGL (https://github.com/Microsoft/automatic-graph-layout)
+6. PSharp (https://github.com/p-org/PSharp)
+
+These are included in the "Ext" folder.
