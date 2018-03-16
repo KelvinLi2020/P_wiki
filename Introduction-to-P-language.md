@@ -28,5 +28,5 @@ P is a domain-specific language for implementing protocols in an asynchronous ap
 it is expected that the parts of the application other than the protocols would be written in a 
 host language such as C.
 We will describe the foreign code interface important for interoperability between P code and foreign code written
-in C (Section [#sec-foreign-code]).
+in C (TBD).
 Finally, we will provide an overview of the [tools](https://github.com/p-org/P/wiki/P-Tools) for processing a P program.
