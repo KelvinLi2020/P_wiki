@@ -92,7 +92,7 @@ However, a raised event does not go through the queue;
 rather it terminates execution of the enclosing code block and is 
 handled immediately.
 
-The entry code block in state `SendPing` shows a use of the send 
+The entry code block in state `SendPing` shows an example of the "send" 
 statement for sending a `PING` event to the machine whose address 
 is stored in the variable server.
 The keyword `this` evaluates to the address of the machine 
@@ -103,9 +103,9 @@ shows that the data value associated with a received event can be
 retrieved through a parameter of the apppriate type to the event handler.
 In this code block, the `payload` parameter evaluates to the data attached to the 
 `PING` event whose handling caused control to enter `SendPong`.
-This data value is the address of the instance of `Client` machine
+This data value is the address of the instance of the `Client` machine
 that sent the `PING` event.
-A parameter is similarly used to retrieve the argument 
+Similarly, a parameter can be used to retrieve the argument 
 to the constructor of a freshly-created machine when it starts execution 
 in the entry block of its `start` state.
 
@@ -123,18 +123,18 @@ cycles between `SendPing` and `WaitPong` and Y cycles between `WaitPing` and
 `SendPong`.
 
 The most important safety specification of a P program is that every event 
-dequeued by a machine is handled; otherwise, the P runtime throws an UnhandledEvent exception.
-The PingPong program satisfies this specification since the `Server`
-machine handles the `PING` event and the `Client` machine handles 
+dequeued by a machine is handled; otherwise, the P runtime throws an "UnhandledEvent" exception.
+The PingPong program satisfies this specification, since the `Server`
+machine handles the `PING` event, and the `Client` machine handles 
 the `PONG` event in every state where an event dequeue is possible.   
 
 In order to terminate a state machine cleanly, there is a special `halt` event. 
-Termination of a machine due to an unhandled `halt` event is valid behavior
-and does not throw an UnhandledEvent exception.
+Termination of a machine due to an unhandled `halt` event is a valid behavior
+and does not throw the UnhandledEvent exception.
 Therefore, a machine can be halted by queuing a `halt` event to it.
 From the point of view of formal operational semantics,
 a halted machine is fully receptive and consumes any event that is sent to it.
 The P runtime implements this semantics efficiently by cleaning up resources 
-allocated to a halting machine and recording that the machine has halted.
+allocated with the halting machine and recording that the machine has halted.
 An event sent to a halted machine is simply dropped.
 A halted machine cannot be restarted; it remains halted forever. 
