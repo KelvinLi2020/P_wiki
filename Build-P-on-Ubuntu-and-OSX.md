@@ -1,5 +1,5 @@
 ## Dependencies
-Dependencies to build P on Ubuntu or OSX are .Net Core (>= 2.0), Java (as we use [ANTLR](https://www.antlr.org/)) and cmake(>=2.8); Other *nix are untested but should also work.
+Dependencies to build P on Ubuntu 16.04 or OSX are .Net Core (>= 2.0), Java (as we use [ANTLR](https://www.antlr.org/)) and cmake(>=2.8); Other *nix are untested but should also work.
 
 Installation List (Ubuntu 16.04):
 1. Install [.Net Core](https://dotnet.microsoft.com/download/linux-package-manager/ubuntu16-04/runtime-2.1.2)
