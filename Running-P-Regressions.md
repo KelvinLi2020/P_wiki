@@ -20,7 +20,7 @@ Build the UnitTests project to discover the tests.
 
 5.	Choose Settings for the tests that you want to run:
 UnitTests properties -> Settings
-ResetTests replaces /reset for testP.bat;
+ResetTests;
 RunPWithPSharp is for running liveness tests under RegressionTests\Liveness with PTester;
 the rest of the settings are the same as for testP.bat.
 Please note that RunAll overrides RunPc, RunPrt, etc., so it should be set to False if using any of those settings.
