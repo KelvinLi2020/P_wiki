@@ -4,8 +4,6 @@
 
 [**Build P on Ubuntu and MacOS**](https://github.com/p-org/P/wiki/Build-P-on-Ubuntu-and-MacOS)
 
-[**Test Script Files**](https://github.com/p-org/P/wiki/Test-Script-Files)
-
 [**P Tools**](https://github.com/p-org/P/wiki/P-Tools)
 
 ### ****P Tutorial****
