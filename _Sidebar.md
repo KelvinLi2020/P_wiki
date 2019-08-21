@@ -2,7 +2,7 @@
 
 [**Build P on Windows**](https://github.com/p-org/P/wiki/Build-P-on-Windows)
 
-[**Build P on Ubuntu and MacOS**](https://github.com/p-org/P/wiki/Build-P-on-Ubuntu-and-OSX)
+[**Build P on Ubuntu and MacOS**](https://github.com/p-org/P/wiki/Build-P-on-Ubuntu-and-MacOS)
 
 [**Test Script Files**](https://github.com/p-org/P/wiki/Test-Script-Files)
 
