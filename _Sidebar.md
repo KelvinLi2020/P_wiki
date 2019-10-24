@@ -4,21 +4,23 @@
 
 [**Build P on Ubuntu and MacOS**](https://github.com/p-org/P/wiki/Build-P-on-Ubuntu-and-MacOS)
 
-[**P Tools**](https://github.com/p-org/P/wiki/P-Tools)
+[**Compiling P Programs**](https://github.com/p-org/P/wiki/Compiling-P-Programs)
+
+[**Systematic Testing of P Programs**](https://github.com/p-org/P/wiki/SysTesting-P-Programs)
 
 ### ****P Tutorial****
 
 [**Introduction to P Language**](https://github.com/p-org/P/wiki/Introduction-to-P-language) 
 
-[**PingPong program**](https://github.com/p-org/P/wiki/PingPong-program)
+### ****P Examples****
 
-[**Hello program**](https://github.com/p-org/P/wiki/Hello-program)
+[**PingPong program**](https://github.com/p-org/P/wiki/PingPong-program)
 
 [**FailureDetector program**](https://github.com/p-org/P/wiki/FailureDetector-program)
 
-[**Modules**](https://github.com/p-org/P/wiki/Modules)
 
-### ****Testing****
+### ****Contributing to P****
+[**P Compiler Architecture**](https://github.com/p-org/P/wiki/P-Compiler)
 
 [**Running P Regressions**](https://github.com/p-org/P/wiki/Running-P-Regressions)
 
