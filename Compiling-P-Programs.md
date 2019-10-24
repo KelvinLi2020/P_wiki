@@ -1,3 +1,8 @@
+
+There are two ways of compiling a P programs: 
+* Through commandline by passing all the p files to be compiled as arguments to the compiler.
+* Through commandline by passing the pproj (P project) file as input to the compiler.
+
 The P compiler has the following options:
 
 ```
@@ -15,9 +20,6 @@ USAGE: Pc.exe -proj:<.pproj file>
                                   debuggers.
     -h, -help, --help          -- display this help message
 ```
-There are two ways of compiling a P programs: 
-* Through commandline by passing all the p files to be compiled as arguments to the compiler.
-* Through commandline by passing the pproj (P project) file as input to the compiler.
 
 ### Passing all P files as inputs to the compiler
 
