@@ -2,7 +2,7 @@
 
 You must acquire and install these dependencies yourself.
 
-1. [Microsoft .NET Core 2.1 SDK](https://dotnet.microsoft.com/download/dotnet-core/2.1)
+1. [Microsoft .NET Core SDK (>= 2.1)](https://dotnet.microsoft.com/download/dotnet-core/2.1)
 2. [Microsoft .NET 4.6 Developer Pack](https://dotnet.microsoft.com/download/thank-you/net46-developer-pack) (Used to build the C# runtime.)
 3. Visual Studio 2017 (The Free [Community Edition](https://www.visualstudio.com/downloads/) works, see below for setup instructions)
 4. Windows 10 SDK version 10.0.15063.0
