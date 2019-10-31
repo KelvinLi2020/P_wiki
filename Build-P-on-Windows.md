@@ -2,7 +2,7 @@
 
 You must acquire and install these dependencies yourself.
 
-1. [Microsoft .NET Core SDK (>= 2.1)](https://dotnet.microsoft.com/download/dotnet-core/2.1)
+1. [Microsoft .NET Core SDK (2.2)](https://dotnet.microsoft.com/download/dotnet-core/2.2)
 3. Visual Studio 2017 (The Free [Community Edition](https://www.visualstudio.com/downloads/) works, see below for setup instructions)
 4. Windows 10 SDK version 10.0.15063.0
 
