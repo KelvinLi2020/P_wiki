@@ -6,7 +6,7 @@ There are two ways of compiling a P programs:
 The P compiler has the following options:
 
 ```shell
->> <pathtocompiler>\Pc.exe
+dotnet <pathtocompiler>\Pc.dll
 USAGE: Pc.exe file1.p [file2.p ...] [-t:tfile] [options]
 USAGE: Pc.exe -proj:<.pproj file>
     -t:[tfileName]             -- name of output file produced for this compilation unit; if not supplied then file1
@@ -25,10 +25,8 @@ USAGE: Pc.exe -proj:<.pproj file>
 
 The following command can be used for compiling the TwoPhaseCommit example in folder `\Src\Samples\TwoPhaseCommit` and generating the P# output.
 
-```
->> <pathtocompiler>\Pc.exe .\PSrc\Client.p .\PSrc\Coordinator.p .\PSrc\Participant.p .\PSrc\Events.p .\PSrc\Spec.p .\PSrc\TestDriver.p .\PSrc\Timer.p -generate:P# -t:TwoPhaseCommit
-
-Generated TwoPhaseCommit.cs...
+```shell
+>> dotnet <pathtocompiler>\Pc.dll .\PSrc\Client.p .\PSrc\Coordinator.p .\PSrc\Participant.p .\PSrc\Events.p .\PSrc\Spec.p .\PSrc\TestDriver.p .\PSrc\Timer.p -generate:P# -t:TwoPhaseCommit
 ```
 
 ### Passing .pprof (P Project) file to the compiler (Recommended)
@@ -54,6 +52,5 @@ A sample project file for the TwoPhaseCommit example is presented below:
 ```
 Now the following command can be used for compiling the TwoPhaseCommit example:
 ```shell
-<pathtocompiler>\Pc.exe -proj:.\TwoPhaseCommit.pproj
-Generated TwoPhaseCommit.cs...
+dotnet <pathtocompiler>\Pc.dll -proj:.\TwoPhaseCommit.pproj
 ```
