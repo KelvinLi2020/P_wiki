@@ -6,7 +6,7 @@
 
 [**Compiling P Programs**](https://github.com/p-org/P/wiki/Compiling-P-Programs)
 
-[**Systematic Testing of P Programs**](https://github.com/p-org/P/wiki/SysTesting-P-Programs)
+[**Systematic Testing of P Programs**](https://github.com/p-org/P/wiki/Systematic-Testing-P-Programs)
 
 [**Syntax Highlighting for P Programs in IntelliJ**](https://github.com/p-org/P/wiki/SyntaxHighlighting)
 
