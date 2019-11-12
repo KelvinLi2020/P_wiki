@@ -8,6 +8,8 @@
 
 [**Systematic Testing of P Programs**](https://github.com/p-org/P/wiki/SysTesting-P-Programs)
 
+[**Syntax Highlighting for P Programs in IntelliJ**](https://github.com/p-org/P/wiki/SyntaxHighlighting)
+
 ### ****P Tutorial****
 
 [**Introduction to P Language**](https://github.com/p-org/P/wiki/Introduction-to-P-language) 
