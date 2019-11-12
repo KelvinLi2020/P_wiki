@@ -5,7 +5,7 @@ There are two ways of compiling a P programs:
 
 The P compiler has the following options:
 
-```
+```shell
 >> <pathtocompiler>\Pc.exe
 USAGE: Pc.exe file1.p [file2.p ...] [-t:tfile] [options]
 USAGE: Pc.exe -proj:<.pproj file>
@@ -31,7 +31,7 @@ The following command can be used for compiling the TwoPhaseCommit example in fo
 Generated TwoPhaseCommit.cs...
 ```
 
-### Passing .pprof (P Project) file to the compiler
+### Passing .pprof (P Project) file to the compiler (Recommended)
 
 It could be tedious to pass all the P files as commandline arguments to the P compiler.
 P compiler also takes as input a P project file (.pproj) that provides all the necessary input to the compiler.
@@ -53,8 +53,7 @@ A sample project file for the TwoPhaseCommit example is presented below:
 </Project>
 ```
 Now the following command can be used for compiling the TwoPhaseCommit example:
-```
->> <pathtocompiler>\Pc.exe -proj:.\twophasecommit.pproj
-.... Parsing the project file: .\twophasecommit.pproj
+```shell
+<pathtocompiler>\Pc.exe -proj:.\TwoPhaseCommit.pproj
 Generated TwoPhaseCommit.cs...
 ```
