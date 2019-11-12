@@ -11,7 +11,7 @@ The above command generates the `TwoPhaseCommit.dll`.
 
 ### Running the Systematic Testing Engine
 
-We now run the P tester (coyote) on the Brick Manager models.
+We now run the P tester (coyote) on the Two Phase Commit program.
 `Coyote` provides a lot of commandline options for different types of search explorations, coverage generation, parallel search, etc.
 
 The command below runs the model checker to explore `10000` schedules using a `porfolio` of different search strategies that implement hieristics for finding concurrency bugs. The model checker checks the `Test0`
