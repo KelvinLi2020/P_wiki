@@ -1,4 +1,4 @@
-We assume that you have compiled the P implementation of the Two Phase Commit Protocol by following the instructions [here]()
+We assume that you have compiled the P implementation of the Two Phase Commit Protocol by following the instructions [here: Compiling P Programs](https://github.com/p-org/P/wiki/Compiling-P-Programs)
 ### Compiling the Generated C# Code
 The generated C# code must be compiled into either a `dll` or `exe` before passing it to the model-checker.
 
