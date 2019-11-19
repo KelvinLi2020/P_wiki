@@ -19,11 +19,11 @@ test case. In the end, a coverage report is generated with the activities (state
 
 ```shell
 cd /P/Src/Samples/TwoPhaseCommit
-dotnet ~/.nuget/packages/microsoft.coyote/1.0.0-rc2/lib/netcoreapp2.2/coyote.dll test /Users/ankushpd/Workspace/P/Src/Samples/TwoPhaseCommit/bin/netcoreapp2.2/Debug/TwoPhaseCommit.dll  -i 10000 --sch-portfolio --coverage activity -m TwoPhaseCommit.Test0.Execute
+dotnet ~/.nuget/packages/microsoft.coyote/<latest-version>/lib/netcoreapp2.2/coyote.dll test /Users/ankushpd/Workspace/P/Src/Samples/TwoPhaseCommit/bin/netcoreapp2.2/Debug/TwoPhaseCommit.dll  -i 10000 --sch-portfolio --coverage activity -m TwoPhaseCommit.Test0.Execute
 ```
 
 Running the `Test1` testcase will find a bug.
 
 ```shell
-dotnet ~/.nuget/packages/microsoft.coyote/1.0.0-rc2/lib/netcoreapp2.2/coyote.dll test /Users/ankushpd/Workspace/P/Src/Samples/TwoPhaseCommit/bin/netcoreapp2.2/Debug/TwoPhaseCommit.dll  -i 10000 --sch-portfolio --coverage activity -m TwoPhaseCommit.Test1.Execute
+dotnet ~/.nuget/packages/microsoft.coyote/<latest-version>/lib/netcoreapp2.2/coyote.dll test /Users/ankushpd/Workspace/P/Src/Samples/TwoPhaseCommit/bin/netcoreapp2.2/Debug/TwoPhaseCommit.dll  -i 10000 --sch-portfolio --coverage activity -m TwoPhaseCommit.Test1.Execute
 ```
