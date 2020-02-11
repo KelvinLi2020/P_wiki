@@ -1,3 +1,8 @@
+We will use the [Two-Phase-Commit](https://github.com/p-org/P/tree/master/Tutorial/TwoPhaseCommit) example in the Tutorials folder to describe how to compile P programs.
+
+The details about the above two phase commit example is provided here: 
+
+
 
 There are two ways of compiling a P programs: 
 * Through commandline by passing all the p files to be compiled as arguments to the compiler.

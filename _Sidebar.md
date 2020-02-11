@@ -14,8 +14,6 @@
 
 [**Introduction to P Language**](https://github.com/p-org/P/wiki/Introduction-to-P-language) 
 
-### ****P Examples****
-
 [**PingPong program**](https://github.com/p-org/P/wiki/PingPong-program)
 
 [**FailureDetector program**](https://github.com/p-org/P/wiki/FailureDetector-program)
