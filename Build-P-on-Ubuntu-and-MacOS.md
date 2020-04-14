@@ -43,7 +43,7 @@ Add the following two lines to the `~\.bash_profile`.
 
 ```shell script
 alias pc='dotnet <P-Folder>/Bld/Drops/Release/Binaries/Pc.dll'
-alias pmc='dotnet $HOME/.nuget/packages/microsoft.coyote/1.0.0-rc9/lib/netcoreapp2.2/coyote.dll test'
+alias pmc='dotnet $HOME/.nuget/packages/microsoft.coyote/1.0.3/lib/netcoreapp2.2/coyote.dll test'
 ```
 
 and then
