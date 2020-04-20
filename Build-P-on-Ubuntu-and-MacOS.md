@@ -2,7 +2,7 @@
 
 You must acquire and install these dependencies yourself.
 
-1. [Microsoft .NET Core SDK (2.2)](https://dotnet.microsoft.com/download/dotnet-core/2.2)
+1. [Microsoft .NET Core SDK (3.1)](https://dotnet.microsoft.com/download/dotnet-core/3.1)
 
 2. A recent Java JRE (to run the [ANTLR](https://www.antlr.org/) parser generator)
 
