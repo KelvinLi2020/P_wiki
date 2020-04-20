@@ -2,7 +2,7 @@
 
 Please install these dependencies yourself.
 
-1. [Microsoft .NET Core SDK (2.2)](https://dotnet.microsoft.com/download/dotnet-core/2.2)
+1. [Microsoft .NET Core SDK (3.1)](https://dotnet.microsoft.com/download/dotnet-core/3.1)
 2. Windows 10 SDK version 10.0.15063.0
 
 ## Getting the Bits
