@@ -31,7 +31,7 @@ Add the following two lines to the `Microsoft.PowerShell_profile` normally found
 
 ```shell script
 New-Item alias:pc -Value <P-Folder>\Bld\Drops\Release\Binaries\win-x64\Pc.exe
-function pmc { dotnet C:\Users\<username>\.nuget\packages\microsoft.coyote\1.0.4\lib\netcoreapp3.1\coyote.dll test $args}
+function pmc { dotnet C:\Users\<username>\.nuget\packages\microsoft.coyote\1.0.5\lib\netcoreapp3.1\coyote.dll test $args}
 ```
 -----
 - On running `pc`, you should see:

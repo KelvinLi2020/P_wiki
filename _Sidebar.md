@@ -10,17 +10,22 @@
 
 [**Syntax Highlighting for P Programs in IntelliJ**](https://github.com/p-org/P/wiki/SyntaxHighlighting)
 
-### ****P Tutorial****
+### [****P Tutorial****](https://github.com/p-org/P/wiki/P-Tutorial:-Table-of-Contents)
 
 [**Introduction to P Language**](https://github.com/p-org/P/wiki/Introduction-to-P-language) 
+
+[**Two Phase Commit Protocol in P**](https://github.com/p-org/P/wiki/Two-Phase-Commit-Protocol-in-P)
 
 [**PingPong program**](https://github.com/p-org/P/wiki/PingPong-program)
 
 [**FailureDetector program**](https://github.com/p-org/P/wiki/FailureDetector-program)
 
+[**Hello program**](https://github.com/p-org/P/wiki/Hello-program)
+
+[**P-Tools**](https://github.com/p-org/P/wiki/P-Tools)
 
 ### ****Contributing to P****
+
 [**P Compiler Architecture**](https://github.com/p-org/P/wiki/P-Compiler)
 
 [**Running P Regressions**](https://github.com/p-org/P/wiki/Running-P-Regressions)
-

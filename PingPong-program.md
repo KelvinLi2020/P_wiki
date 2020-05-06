@@ -100,7 +100,7 @@ executing the current statement.
 
 Finally, the entry code block in state `SendPong` of machine `Server`
 shows that the data value associated with a received event can be 
-retrieved through a parameter of the apppriate type to the event handler.
+retrieved through a parameter of the appropriate type to the event handler.
 In this code block, the `payload` parameter evaluates to the data attached to the 
 `PING` event whose handling caused control to enter `SendPong`.
 This data value is the address of the instance of the `Client` machine

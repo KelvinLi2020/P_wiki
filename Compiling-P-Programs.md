@@ -3,7 +3,9 @@ The details about the two phase commit example is provided [here](https://github
 
 There are two ways of compiling a P programs: 
 * [Recommended] Through commandline by passing the pproj (P project) file as input to the compiler.
-* Through commandline by passing all the p files to be compiled as arguments to the compiler.
+* [Alternative] Through commandline by passing all the p files to be compiled as arguments to the compiler.
+
+In this section, `pc` is the [alias](https://github.com/p-org/P/wiki/Build-P-on-Ubuntu-and-MacOS) to the P compiler.
 
 ### Passing .pproj (P Project) file to the compiler (Recommended)
 
@@ -29,30 +31,25 @@ The following command can be used for compiling the TwoPhaseCommit example:
 Expected output:
 ```
 .... Parsing the project file: TwoPhaseCommit.pproj
-....... project includes: p/tutorial/twophasecommit/psrc/timer.p
-....... project includes: p/tutorial/twophasecommit/psrc/coordinator.p
-....... project includes: p/tutorial/twophasecommit/psrc/client.p
-....... project includes: p/tutorial/twophasecommit/psrc/participant.p
-....... project includes: p/tutorial/twophasecommit/psrc/events.p
-....... project includes: p/tutorial/twophasecommit/pspec/spec.p
-....... project includes: p/tutorial/twophasecommit/ptst/testdriver.p
-....... project includes: p/tutorial/twophasecommit/ptst/testscripts.p
+....... project includes: P/Tutorial/TwoPhaseCommit/PSrc/Client.p
+....... project includes: P/Tutorial/TwoPhaseCommit/PSrc/Participant.p
+....... project includes: P/Tutorial/TwoPhaseCommit/PSrc/Coordinator.p
+....... project includes: P/Tutorial/TwoPhaseCommit/PSrc/Timer.p
+....... project includes: P/Tutorial/TwoPhaseCommit/PSrc/Events.p
+....... project includes: P/Tutorial/TwoPhaseCommit/PSpec/Spec.p
+....... project includes: P/Tutorial/TwoPhaseCommit/PTst/TestScripts.p
+....... project includes: P/Tutorial/TwoPhaseCommit/PTst/TestDriver.p
 Generated TwoPhaseCommit.cs...
-
 ```
 
-`pc` is the [alias](https://github.com/p-org/P/wiki/Build-P-on-Ubuntu-and-MacOS) to the P compiler.
-
-### Passing all P files as inputs to the compiler
+### Passing all P files as inputs to the compiler (Alternative)
 
 The following command can be used for compiling the TwoPhaseCommit example:
 
 ```shell
->> pc .\PSrc\Client.p .\PSrc\Coordinator.p .\PSrc\Participant.p .\PSrc\Events.p .\PSrc\Spec.p .\PSrc\TestDriver.p .\PSrc\Timer.p -t:TwoPhaseCommit
+> pc .\PSrc\Client.p .\PSrc\Coordinator.p .\PSrc\Participant.p .\PSrc\Events.p .\PSrc\Spec.p .\PSrc\TestDriver.p .\PSrc\Timer.p -t:TwoPhaseCommit
 ```
 
-`pc` is the [alias](https://github.com/p-org/P/wiki/Build-P-on-Ubuntu-and-MacOS) to the P compiler.
+----
 
-
-
-
+Now that your first P program has been compiled, it is time to check it for errors. Next: [**Systematic Testing of P Programs**](https://github.com/p-org/P/wiki/Systematic-Testing-P-Programs)
